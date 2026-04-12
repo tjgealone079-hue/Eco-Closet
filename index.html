@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EcoCloset – Track Your Fashion Impact</title>
+  <link rel="stylesheet" href="/styles/index.css">
+</head>
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="brand">
+        <h1>EcoCloset</h1>
+      </div>
+
+      <div class="nav-links">
+        <button class="home">Home</button>
+        <button class="login">Login</button>
+        <button class="items">Items</button>
+        <button class="cart">Cart</button>
+        <button class="payment">Payment</button>
+        <button class="checkOut">Checkout</button>
+      </div>
+
+      <div class="burger-wrap" id="burgerWrap" style="display:none;">
+        <button class="burger-btn" id="burgerBtn">&#9776;</button>
+        <div class="burger-dropdown" id="burgerDropdown">
+          <button onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- LANDING PAGE -->
+  <section class="lanpage" id="landingPage">
+    <div class="container lanpagecontainer">
+      <div class="hero-section ">
+        <div class="hero-container">
+          <div class="hero-text">
+            <h2>Thrift beautifully. Track your impact.</h2>
+            <p>
+              Every time a customer buys a thrift item, EcoCloset calculates the
+              environmental savings compared to buying a brand-new item.
+            </p>
+            <button class="main-btn" onclick="showPage('loginPage')">
+              Start Shopping
+            </button>
+          </div>
+          <div class="hero-image">
+            <img src="/images/index_Img.webp" alt="Vintage fashion">
+          </div>
+        </div>
+      </div>
+
+      <div class="steps-section">
+          <div class="steps-container">
+
+              <div class="steps-header">
+                  <span class="step-label">STEP</span>
+                  <h2>Make every thrift purchase count with <br> real-time environmental impact tracking.</h2>
+              </div>
+
+              <div class="steps-cards">
+
+                  <div class="step-card">
+                      <h1>1</h1>
+                      <h3>Create your account</h3>
+                      <p>Sign up to unlock your personal eco dashboard and begin tracking your sustainable shopping journey.</p>
+                  </div>
+
+                  <div class="step-card">
+                      <h1>2</h1>
+                      <h3>Shop thrift items</h3>
+                      <p>Browse curated pre-loved fashion pieces and discover each item's environmental impact before purchase.</p>
+                  </div>
+
+                  <div class="step-card">
+                      <h1>3</h1>
+                      <h3>Measure your contribution</h3>
+                      <p>Instantly see how much water, carbon emissions, and clothing waste you save every time you choose thrift over new.</p>
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+
+      <div class="full-bleed-section">
+          <div class="full-bleed-container">
+          <h2>What does <br> your style do <br> for our planet?</h2>
+          <img src="/images/item_1.webp" alt="">
+
+          </div>
+      </div>
+ 
+    </div>
+  </section>
+
+  <!-- LOG IN -->
+  <section class="logpage" id="loginPage">
+    <div class="box login-box" id="loginForm">
+      <h2 class="section-title">Login</h2>
+      <p class="section-subtitle">Welcome back! Sign in to your account</p>
+      <input type="email" id="loginEmail" placeholder="Email Address">
+      <input type="password" id="loginPassword" placeholder="Password">
+      <button class="main-btn" style="width:100%;" onclick="doLogin()">Login</button>
+      <p id="loginMsg" style="text-align:center; margin-top:12px; color:#2f5d50; font-weight:bold;"></p>
+      <p style="text-align:center; margin-top:12px; color:#6c645a; font-size:0.9rem;">Don't have an account? <a href="#" onclick="showSignup()" style="color:#d8836d;">Sign up</a></p>
+    </div>
+  </section>
+
+  <!-- SIGN UP -->
+  <section class="logpage" id="signupPage">
+    <div class="box login-box">
+      <h2 class="section-title">Sign Up</h2>
+      <p class="section-subtitle">Create your account to unlock your personal impact dashboard</p>
+      <input type="text" id="signupName" placeholder="Full Name">
+      <input type="email" id="signupEmail" placeholder="Email Address">
+      <input type="password" id="signupPassword" placeholder="Password">
+      <button class="main-btn" style="width:100%;" onclick="doSignup()">Create Account</button>
+      <p id="signupMsg" style="text-align:center; margin-top:12px; color:#2f5d50; font-weight:bold;"></p>
+      <p style="text-align:center; margin-top:12px; color:#6c645a; font-size:0.9rem;">Already have an account? <a href="#" onclick="showLogin()" style="color:#d8836d;">Login</a></p>
+    </div>
+  </section>
+
+  <!-- ITEMS PAGE -->
+  <section class="itemspage" id="itemsPage">
+    <div class="container">
+      <div class="category-bar">
+        <button>New Arrivals</button>
+        <button>Dresses</button>
+        <button>Outerwear</button>
+        <button>Tops</button>
+        <button>Accessories</button>
+      </div>
+
+      <div class="products-header">
+        <h2 class="impact-section-title">Product Page Impact</h2>
+        <button class="main-btn" onclick="goToCart()">Go to Cart</button>
+      </div>
+
+      <div class="products">
+
+      <!-- 1 -->
+      <div class="card">
+        <img src="/images/items-item1.webp" alt="Pink Lace Top">
+        <div class="card-content">
+          <span class="tag">Best Seller</span>
+          <h4>Pink Lace Top</h4>
+          <p>Size: S–M</p>
+          <div class="impact-mini">
+            <strong>Eco Impact:</strong><br>
+            Water: 1,500 – 3,000 liters<br>
+            CO2: 4–8 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱99</div>
+            <button onclick="addToCart('Pink Lace Top', 99, 3000, 8, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="card">
+        <img src="/images/items-item2.webp" alt="Floral Pink Lace Top">
+        <div class="card-content">
+          <span class="tag">New Arrival</span>
+          <h4>Floral Pink Lace Top</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 7,000 liters<br>
+            CO2: 4–10 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱129</div>
+            <button onclick="addToCart('Floral Pink Lace Top', 129, 7000, 10, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="card">
+        <img src="/images/items-item3.webp" alt="Floral Top">
+        <div class="card-content">
+          <span class="tag">Curated Pick</span>
+          <h4>Floral Top</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 1,500 – 3,000 liters<br>
+            CO2: 15 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱139</div>
+            <button onclick="addToCart('Floral Top', 139, 3000, 15, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="card">
+        <img src="/images/items-item4.webp" alt="Axe Babydoll Long Sleeves">
+        <div class="card-content">
+          <span class="tag">Vintage Classic</span>
+          <h4>Axe Babydoll Long Sleeves</h4>
+          <p>Size: Medium</p>
+          <div class="impact-mini">
+            Water: 2,500 – 3,000 liters<br>
+            CO2: 2–4 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱139</div>
+            <button onclick="addToCart('Axe Babydoll Long Sleeves', 139, 3000, 4, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="card">
+        <img src="/images/items-item5.webp" alt="Black Floral Top">
+        <div class="card-content">
+          <span class="tag">Best Seller</span>
+          <h4>Black Floral Top</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 1,000 – 2,000 liters<br>
+            CO2: 5–10 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱139</div>
+            <button onclick="addToCart('Black Floral Top', 139, 2000, 10, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="card">
+        <img src="/images/items-item6.webp" alt="Pink Ruffles Top">
+        <div class="card-content">
+          <span class="tag">New Arrival</span>
+          <h4>Pink Ruffles Top</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 1,500 – 2,500 liters<br>
+            CO2: 2–8 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱70</div>
+            <button onclick="addToCart('Pink Ruffles Top', 70, 2500, 8, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="card">
+        <img src="/images/items-item7.webp" alt="Babydoll White Blouse">
+        <div class="card-content">
+          <span class="tag">Curated Pick</span>
+          <h4>Babydoll White Blouse</h4>
+          <p>Size: Medium</p>
+          <div class="impact-mini">
+            Water: 7,500 liters<br>
+            CO2: 4–88 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱139</div>
+            <button onclick="addToCart('Babydoll White Blouse', 139, 7500, 88, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="card">
+        <img src="/images/items-item8.webp" alt="Brown Floral Skirt">
+        <div class="card-content">
+          <span class="tag">Vintage Classic</span>
+          <h4>Brown Floral Skirt</h4>
+          <p>Size: 26 waistline</p>
+          <div class="impact-mini">
+            Water: 2,500 – 3,000 liters<br>
+            CO2: 2–4 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Brown Floral Skirt', 149, 3000, 4, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="card">
+        <img src="/images/items-item9.webp" alt="Pink Floral Long Skirt">
+        <div class="card-content">
+          <span class="tag">New Arrival</span>
+          <h4>Pink Floral Long Skirt</h4>
+          <p>Size: 26 waistline</p>
+          <div class="impact-mini">
+            Water: 2,500 – 3,000 liters<br>
+            CO2: 2–4 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Pink Floral Long Skirt', 149, 3000, 4, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 -->
+      <div class="card">
+        <img src="/images/items-item10.webp" alt="Denim Shorts">
+        <div class="card-content">
+          <span class="tag">Curated Pick</span>
+          <h4>Denim Shorts</h4>
+          <p>Size: 25 waistline</p>
+          <div class="impact-mini">
+            Water: 7,500 liters<br>
+            CO2: 20 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Denim Shorts', 149, 7500, 20, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 -->
+      <div class="card">
+        <img src="/images/items-item11.webp" alt="Pink Linen Skirt">
+        <div class="card-content">
+          <span class="tag">Vintage Classic</span>
+          <h4>Pink Linen Skirt</h4>
+          <p>Size: 25 waistline</p>
+          <div class="impact-mini">
+            Water: 2,700 liters<br>
+            CO2: 3 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Pink Linen Skirt', 149, 2700, 3, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 -->
+      <div class="card">
+        <img src="/images/items-item12.webp" alt="Brown Long Skirt">
+        <div class="card-content">
+          <span class="tag">Best Seller</span>
+          <h4>Brown Long Skirt</h4>
+          <p>Size: 26 waistline</p>
+          <div class="impact-mini">
+            Water: 2,500 – 3,000 liters<br>
+            CO2: 2–4 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Brown Long Skirt', 149, 3000, 4, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 -->
+      <div class="card">
+        <img src="/images/items-item13.webp" alt="Pink Off Shoulder Top">
+        <div class="card-content">
+          <span class="tag">New Arrival</span>
+          <h4>Pink Off Shoulder Top</h4>
+          <p>Size: S–M</p>
+          <div class="impact-mini">
+            Water: 1,500 – 3,000 liters<br>
+            CO2: 15 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱129</div>
+            <button onclick="addToCart('Pink Off Shoulder Top', 129, 3000, 15, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 -->
+      <div class="card">
+        <img src="/images/items-item14.webp" alt="Wide Leg Denim Jeans">
+        <div class="card-content">
+          <span class="tag">Curated Pick</span>
+          <h4>Wide Leg Denim Jeans</h4>
+          <p>Size: 26 waistline</p>
+          <div class="impact-mini">
+            Water: 7,500 liters<br>
+            CO2: 2–4 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Wide Leg Denim Jeans', 149, 7500, 4, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15 -->
+      <div class="card">
+        <img src="/images/items-item15.webp" alt="Deep Purple Blouse">
+        <div class="card-content">
+          <span class="tag">Vintage Classic</span>
+          <h4>Deep Purple Blouse</h4>
+          <p>Size: Medium</p>
+          <div class="impact-mini">
+            Water: 1,500 – 2,500 liters<br>
+            CO2: 2–8 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱129</div>
+            <button onclick="addToCart('Deep Purple Blouse', 129, 2500, 8, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16 -->
+      <div class="card">
+        <img src="/images/items-item16.webp" alt="Purple Triangle Top">
+        <div class="card-content">
+          <span class="tag">New Arrival</span>
+          <h4>Purple Triangle Top</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 1,500 – 3,000 liters<br>
+            CO2: 4–8 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱109</div>
+            <button onclick="addToCart('Purple Triangle Top', 109, 3000, 8, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17 -->
+      <div class="card">
+        <img src="/images/items-item17.webp" alt="Brown Pants">
+        <div class="card-content">
+          <span class="tag">Curated Pick</span>
+          <h4>Brown Pants</h4>
+          <p>Size: 25 waistline</p>
+          <div class="impact-mini">
+            Water: 7,500 liters<br>
+            CO2: 20 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱179</div>
+            <button onclick="addToCart('Brown Pants', 179, 7500, 20, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 -->
+      <div class="card">
+        <img src="/images/items-item18.webp" alt="Denim Square Top">
+        <div class="card-content">
+          <span class="tag">Vintage Classic</span>
+          <h4>Denim Square Top</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 7,000 liters<br>
+            CO2: 25 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱1399</div>
+            <button onclick="addToCart('Denim Square Top', 1399, 7000, 25, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19 -->
+      <div class="card">
+        <img src="/images/items-item19.webp" alt="Polka Set">
+        <div class="card-content">
+          <span class="tag">Best Seller</span>
+          <h4>Polka Set</h4>
+          <p>Size: Small / 25 waistline</p>
+          <div class="impact-mini">
+            Water: 2,000 – 4,000 liters<br>
+            CO2: 5–10 kg<br>
+            2 items saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱179</div>
+            <button onclick="addToCart('Polka Set', 179, 4000, 10, 2)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20 -->
+      <div class="card">
+        <img src="/images/items-item20.webp" alt="White Lace Dress">
+        <div class="card-content">
+          <span class="tag">New Arrival</span>
+          <h4>White Lace Dress</h4>
+          <p>Size: Medium</p>
+          <div class="impact-mini">
+            Water: 2,500 – 3,000 liters<br>
+            CO2: 2–4 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('White Lace Dress', 149, 3000, 4, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21 -->
+      <div class="card">
+        <img src="/images/items-item21.webp" alt="Pleated Brown Blouse">
+        <div class="card-content">
+          <span class="tag">Curated Pick</span>
+          <h4>Pleated Brown Blouse</h4>
+          <p>Size: Small</p>
+          <div class="impact-mini">
+            Water: 1,500 – 2,500 liters<br>
+            CO2: 4–8 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱129</div>
+            <button onclick="addToCart('Pleated Brown Blouse', 129, 2500, 8, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22 -->
+      <div class="card">
+        <img src="/images/items-item22.webp" alt="Deep Purple Button Down Top">
+        <div class="card-content">
+          <span class="tag">Vintage Classic</span>
+          <h4>Deep Purple Button Down Top</h4>
+          <p>Size: Medium</p>
+          <div class="impact-mini">
+            Water: 1,500 – 2,500 liters<br>
+            CO2: 2–8 kg<br>
+            1 item saved
+          </div>
+          <div class="price-row">
+            <div class="price">₱149</div>
+            <button onclick="addToCart('Deep Purple Button Down Top', 149, 2500, 8, 1)">Add</button>
+          </div>
+        </div>
+      </div>
+
+      </div>
+
+
+      <div class="box">
+        <h2 class="impact-section-title">Impact Comparison Tool</h2>
+        <p class="muted">Customers can compare thrift vs new clothing.</p>
+
+        <div class="comparison-grid">
+          <div class="compare-card">
+            <h3>T-Shirt</h3>
+            <p><strong>Buying New:</strong> 2,700 L water used</p>
+            <p><strong>Buying Thrift:</strong> 0 L new water</p>
+          </div>
+          <div class="compare-card">
+            <h3>Jeans</h3>
+            <p><strong>Buying New:</strong> 7,000 L water used</p>
+            <p><strong>Buying Thrift:</strong> 0 L new water</p>
+          </div>
+          <div class="compare-card">
+            <h3>Jacket</h3>
+            <p><strong>Buying New:</strong> Higher carbon footprint</p>
+            <p><strong>Buying Thrift:</strong> Lower emissions impact</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CART -->
+  <section class="cartpage" id="cartPage">
+    <div class="container">
+      <div class="box">
+        <h2 class="section-title">Your Cart</h2>
+        <p class="section-subtitle">Review your selected items and environmental savings</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Price</th>
+              <th>Water Saved</th>
+              <th>CO₂ Reduced</th>
+              <th>Waste Prevented</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody id="cartItems">
+            <tr>
+              <td colspan="6">Your cart is empty.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="summary">
+          <p><strong>Total:</strong> ₱<span id="cartTotal">0</span></p>
+          <p><strong>Water saved:</strong> <span id="waterSaved">0</span> liters</p>
+          <p><strong>CO2 reduced:</strong> <span id="carbonSaved">0</span> kg</p>
+          <p><strong>Clothing waste prevented:</strong> <span id="wasteSaved">0</span> item(s)</p>
+          <button class="main-btn" onclick="goToPayment()">Proceed to Payment</button>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2 class="impact-section-title">Customer Impact Dashboard</h2>
+        <p class="muted">When users create an account, they get a personal impact dashboard.</p>
+
+        <div class="dashboard-grid">
+          <div class="stat-card">
+            <h3>Thrift Items Purchased</h3>
+            <div class="big-number" id="dashItems">0</div>
+          </div>
+          <div class="stat-card">
+            <h3>Water Saved</h3>
+            <div class="big-number" id="dashWater">0 L</div>
+          </div>
+          <div class="stat-card">
+            <h3>CO2 Emissions Reduced</h3>
+            <div class="big-number" id="dashCarbon">0 kg</div>
+          </div>
+          <div class="stat-card">
+            <h3>Clothes Rescued</h3>
+            <div class="big-number" id="dashWaste">0</div>
+          </div>
+        </div>
+
+        <div class="progress-wrap">
+          <h3 style="color:#2f5d50;">Impact Progress Bar</h3>
+          <p class="muted">Your Goal: Save 50,000 liters of water</p>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill">0%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2 class="impact-section-title">Eco Badges & Rewards</h2>
+        <p class="muted">Customers earn badges based on their environmental contribution.</p>
+
+        <div class="badge-grid">
+          <div class="badge-card">
+            <h3>Eco Beginner</h3>
+            <p>5 thrift purchases</p>
+          </div>
+          <div class="badge-card">
+            <h3>Sustainability Supporter</h3>
+            <p>15 purchases</p>
+          </div>
+          <div class="badge-card">
+            <h3>Planet Protector</h3>
+            <p>30 purchases</p>
+          </div>
+          <div class="badge-card">
+            <h3>Eco Champion</h3>
+            <p>50 purchases</p>
+          </div>
+        </div>
+
+        <div class="summary">
+          <p><strong>Your current badge:</strong> <span id="currentBadge">No badge yet</span></p>
+          <p><strong>Reward:</strong> <span id="currentReward">Keep thrifting to unlock rewards</span></p>
+        </div>
+      </div>
+
+      <div class="box">
+        <h2 class="impact-section-title">Community Impact Counter</h2>
+        <p class="muted">The website shows the total environmental impact of all customers combined.</p>
+
+        <div class="community-grid">
+          <div class="community-card">
+            <h3>Water Saved</h3>
+            <div class="big-number">2,000,000 L</div>
+          </div>
+          <div class="community-card">
+            <h3>CO2 Reduced</h3>
+            <div class="big-number">5,000 kg</div>
+          </div>
+          <div class="community-card">
+            <h3>Clothes Rescued</h3>
+            <div class="big-number">3,000</div>
+          </div>
+        </div>
+
+        <div class="community-banner">
+          EcoCloset is a movement, not just a store.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section class="paymentpage" id="paymentPage">
+    <div class="container">
+      <div class="box" style="max-width:700px; margin:auto;">
+        <h2 class="section-title">Payment Method</h2>
+        <p class="section-subtitle">Choose how you want to complete your order</p>
+
+        <select id="paymentMethod">
+          <option value="Cash on Delivery">Cash on Delivery</option>
+          <option value="GCash">GCash</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="PayPal">PayPal</option>
+        </select>
+
+        <input type="text" id="accountName" placeholder="Name on Card / Account">
+        <input type="text" id="accountNumber" placeholder="Card / Account Number">
+        <input type="text" id="address" placeholder="Delivery Address">
+
+        <button class="main-btn" style="width:100%;" onclick="goToCheckout()">Continue to Checkout</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHECKOUT -->
+  <section class="checkoutpage" id="checkoutPage">
+    <div class="container">
+      <div class="box" style="max-width:700px; margin:auto;">
+        <h2 class="section-title" id="checkoutTitle" style="display:none;">Checkout Complete</h2>
+        <div class="checkout-message" id="checkoutMessage" style="display:none;">
+          <p id="finalMessage"></p>
+          <p id="finalTotal"></p>
+          <p id="finalPayment"></p>
+          <p id="finalImpact"></p>
+          <p id="finalBadge"></p>
+          <br>
+          <button class="main-btn" onclick="resetShop()">Shop Again</button>
+        </div>
+        <div class="checkout-message" id="emptyCheckoutMessage">
+          <h2 class="section-title">No items to checkout</h2>
+          <p style="color:#6c645a; font-size:0.9rem; margin-top:8px;">You have no items in your order. Go browse our thrift collection!</p>
+          <br>
+          <button class="main-btn" onclick="showPage('itemsPage')">Browse Items</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="toastMsg" style="display:none; position:fixed; top:6.5rem; right:4rem; background:#2f5d50; color:white; padding:12px 20px; border-radius:12px; font-size:0.85rem; z-index:9999; box-shadow:0 4px 16px rgba(0,0,0,0.15);"></div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
